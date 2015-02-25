@@ -2,11 +2,15 @@ define(["jquery","d3","topojson","datamaps"],
 	function($,d3,topojson,Datamap) {
 
 	var map = new Datamap({
-		element: $('#mapcontainer')[0],
+		element: $('#container')[0],
 		projection: 'mercator',
 		data: {},
+		fills: { defaultFill: "#3498db"},
 		geographyConfig: {
 			highlightOnHover: false,
+			popupTemplate: function(geo,data) {
+				return '<div class="hoverlabel">' + geo.properties.name + '</div';
+			}
 		},
 	});
 
@@ -20,6 +24,7 @@ define(["jquery","d3","topojson","datamaps"],
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
 		// Handle click event
+		console.log(geo.properties.name);
 	});
 	return map;
 

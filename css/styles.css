@@ -5,5 +5,20 @@ html, body {
 body {
 	font-family: 'Open Sans', sans-serif;
   	font-weight: 300;
+  	background-color: #000000;
 }
-/* This is the css */
+
+.hoverlabel {
+	padding: 4px;
+	border-radius: 4px;
+	background-color: white;
+	opacity: 0.75;
+	font-size: 0.8em;
+	color: black;
+}
+
+#container {
+	margin: 0 auto;
+	height: 600px;
+	width: 800px;
+}
