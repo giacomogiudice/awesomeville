@@ -1,7 +1,14 @@
 define(["jquery","d3","topojson","datamaps", "jqueryui"],
 	function($,d3,topojson,Datamap) {
 
-
+    /* This is how you would bind an event to the slider from here,
+    NOTE: you have to remove the event bound when the slider is created,
+    in init.js to be able to do it from here. 
+    $( "#slider" ).slider({
+      slide: function( event, ui ) {
+        console.log(ui.value*2);
+      }
+    });*/
 
 	var map = new Datamap({
 		element: $('#mapContainer')[0],
@@ -22,8 +29,6 @@ define(["jquery","d3","topojson","datamaps", "jqueryui"],
 		map.svg.selectAll("g")
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	}));
-
-
 
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
@@ -50,6 +55,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui"],
             }
         }
     ];
+
     var norLines = [
         {
             origin: {
