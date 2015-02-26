@@ -8,5 +8,6 @@ define(["jquery","map/drawMap","map/updateMap"],
 
 		var map = drawMap;
 		updateMap(map);
+		
 	});
 });
