@@ -1,8 +1,10 @@
-define(["jquery","d3","topojson","datamaps"],
+define(["jquery","d3","topojson","datamaps", "jqueryui"],
 	function($,d3,topojson,Datamap) {
 
+
+
 	var map = new Datamap({
-		element: $('#container')[0],
+		element: $('#mapContainer')[0],
 		projection: 'mercator',
 		data: {},
 		fills: { defaultFill: "#3498db"},
@@ -20,6 +22,8 @@ define(["jquery","d3","topojson","datamaps"],
 		map.svg.selectAll("g")
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	}));
+
+
 
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
