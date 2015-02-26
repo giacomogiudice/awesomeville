@@ -24,6 +24,59 @@ define(["jquery","d3","topojson","datamaps"],
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
 		// Handle click event
+		var sweLines = [
+        {
+            origin: {
+                latitude: 59.17,
+                longitude: 14.0
+            },
+            destination: {
+                latitude: 41.50,
+                longitude: 85.37
+            }
+        },
+                {
+            origin: {
+                latitude: 59.17,
+                longitude: 14.0
+            },
+            destination: {
+                latitude: 20.26 ,
+                longitude: 80.42
+            }
+        }
+    ];
+    var norLines = [
+        {
+            origin: {
+                latitude: 60.00,
+                longitude: 10.0
+            },
+            destination: {
+                latitude: 41.50,
+                longitude: -87.37
+            }
+        },
+                {
+            origin: {
+                latitude: 60.00,
+                longitude: 10.0
+            },
+            destination: {
+                latitude: 40.26 ,
+                longitude: -4.42
+            }
+        }
+    ];
+                if(geo.properties.name == 'Sweden'){
+                	
+                  map.svg.selectAll('path.datamaps-arc').remove()
+                  map.arc( sweLines, {strokeWidth: 2});                 
+                }
+                if(geo.properties.name == 'Norway'){
+                  map.svg.selectAll('path.datamaps-arc').remove()
+                  map.arc( norLines, {strokeWidth: 2});
+                }  
 		console.log(geo.properties.name);
 	});
 	return map;
