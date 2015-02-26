@@ -15,7 +15,7 @@ require.config({
 		},
 		datamaps: {
 			deps: ['d3', 'topojson']
-		}
+		},
 	}
 });
 requirejs(["init"]);

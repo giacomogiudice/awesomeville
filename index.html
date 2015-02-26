@@ -4,30 +4,38 @@
 	<title>
 		Awesomeville
 	</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+	
+
+
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<!-- Switch to main.min.js once compiled -->
 	<script data-main="js/main.js" src="js/lib/require.js"></script>
 </head>
 <body>
 	<div id="container">
-	<div id="TimeSliderContainer" style="color:white; position:absolute; bottom:0px; width:50%;">
+		<div id="TimeSliderContainer" style="color:white; position:absolute; bottom:0px; width:50%;">
+		   <div id="slider"></div>
+		   <script>
+				$( "#slider" ).slider({
+				    value:100,
+				    min: 1960,
+				    max: 2020,
+				    step: 10,
+				    slide: function( event, ui ) {
+				       console.log(ui.value);
+				    }
+			    });
+		   </script>
 
-	<div data-role="main" class="ui-content">
-    	<form method="" action="" id="yearForm">
-      		<label for="points">Points:</label>
-      		<input type="range" name="points" id="year" value="1960" min="1950" max="2020">
-    	</form>
-  	</div>
-
+		</div>
 	</div>
-	</div>
-
 
 </body>
 </html>
