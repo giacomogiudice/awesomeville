@@ -15,8 +15,8 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui" ],
             }
         });
 	
-		var map = drawMap;
-		updateMap(map);
+		global.map = drawMap;
+		updateMap(global.map);
 
 	});
 });
