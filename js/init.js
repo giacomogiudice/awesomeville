@@ -6,7 +6,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui" ],
 
 		$("#mapContainer").height("100%");
         $( "#slider" ).slider({
-            value:100,
+            value: 1970,
             min: 1960,
             max: 2020,
             step: 10,
