@@ -8,7 +8,8 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
       slide: function( event, ui ) {
         console.log(ui.value*2);
       }
-      });*/
+    });*/
+
     var map = new Datamap({
         element: $('#mapContainer')[0],
         projection: 'mercator',
@@ -84,6 +85,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
                         if(migration[global.year][row][i]>1000){
                             addArc(arcs, code, util.countryorder[i], row);
                         }
+
                         /* Old line adding code, remove when properly replaced
                         arcs.push({
                             "origin": {
