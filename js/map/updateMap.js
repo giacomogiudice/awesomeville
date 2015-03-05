@@ -48,6 +48,15 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 }
             }
             global.map.arc(arcs);
-       } 
+       }
+
+       // handle contry colors
+       // colors is the object mapping countrycode -> color
+       // if fillkeys are used you can use it to assign a {fillKey: , value: }
+        var colors = [];
+        for (i in util.countryorder) {
+            colors[util.countryorder[i]] = '#'+Math.floor(Math.random()*16777215).toString(16);
+        } 
+        global.map.updateChoropleth(colors);
 	};
 });
