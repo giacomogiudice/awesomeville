@@ -24,3 +24,24 @@ body {
 	height: 600px;
 	width: 800px;
 }
+
+#rightContainer{
+
+color:white;
+width:225px;
+float: right;
+
+
+
+}
+#leftButtons{
+
+
+color:white;
+width:225px;
+float: left;	
+
+
+}
+
+
