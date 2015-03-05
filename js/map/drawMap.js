@@ -1,4 +1,4 @@
-define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap"],
+define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readdata"],
 	function($,d3,topojson,Datamap,jqueryui,updateMap) {
 
     /* This is how you would bind an event to the slider from here,
