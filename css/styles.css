@@ -18,13 +18,25 @@ body {
 	color: black;
 }
 
-/*The canvas for the map.*/
+/*The canvas*/
 #container {
+	position: absolute;
 	margin: 0 auto;
-	height: 600px;
-	width: 800px;
+	height: 100%;
+	width: 100%;
 }
 
+/*The canvas for the map.*/
+#mapContainer{
+	position: relative;
+	top:0px;
+	height:80%;
+	width:70%;
+	float:left;
+
+}
+
+<<<<<<< HEAD
 #rightContainer{
 
 color:white;
@@ -45,3 +57,15 @@ float: left;
 }
 
 
+=======
+/*Rigt canvas: map explanation*/
+#rightContainer{
+	position: relative;
+	height: 100%;
+	width: 20%;
+	float: right;
+	font-size: 2em;
+	color: red;
+	font-family: Trebuchet MS; 
+	}
+>>>>>>> 1ed05e4e9b8d95e38f98ed6766743a302517f9a2
