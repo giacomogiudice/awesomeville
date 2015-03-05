@@ -1,16 +1,18 @@
 define(["jquery","data/util","data/migration"],function($,util,migration) {
 	var row = "", code = "";
-    var arcs = [];
-	function addArc(array, origin, destination, row){
-        console.log(origin, destination, row);
+    
+	function addArc(array, origin, destination){
+
+        var originCode = util.countryorder[origin];
+        var destinationCode = util.countryorder[Number(destination)];
         array.push({
             "origin": {
-                "latitude": util.positions[origin][0],
-                "longitude": util.positions[origin][1],
+                "latitude": util.positions[originCode][0],
+                "longitude": util.positions[originCode][1],
             },
             "destination": {
-                "latitude": util.positions[destination][0],
-                "longitude": util.positions[destination][1],
+                "latitude": util.positions[destinationCode][0],
+                "longitude": util.positions[destinationCode][1],
             },
             "options": {
                 "strokeWidth": 2,//lineWidth(migration[global.year][row][i]),
@@ -26,10 +28,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
     //Decide color of line on map
     function strokeColor(year, origin, destination){
-        //var value = getDataByYear(year)[origin][destination];
-        console.log(year, origin, destination);
-        console.log(getDataByYear(year));
-        //console.log(getDataByYear(year)[origin][util.countryorder[destination]]);
         
         function RGBComponent() {
             return Math.round(Math.random() * 255);
@@ -46,26 +44,21 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return global.migrationData[(year-1960)/10];
     }
 
-	return function(geo) {
+	return function() {
+
+        var arcs = [];
+        var code = global.id;
 		global.map.svg.selectAll('path.datamaps-arc').remove();
 		//prevent spurious calls
-		if(!global.map || typeof geo.properties === "undefined") { return }
-        global.country = geo.properties.name;
-        code = geo.id;
+		
         row = util.countryorder.indexOf(code);
-        if (row === -1) { console.log(geo.id + " not found") }
+        if (row === -1) { console.log(code + " not found"); }
         else {
             for(i in getDataByYear(global.year)){
-                //console.log(getDataByYear(global.year)[i]);
-                //TODO: Add threshold funciton()
-                //console.log(code);
-                var test = getDataByYear(global.year)[row][util.countryorder[i]];
 
-                //console.log( test>=1000 );
-
-                if(getDataByYear(global.year)[row][util.countryorder[i]]>=1000){
-                    console.log("true");
-                    addArc(arcs, code, util.countryorder[i], row);
+                //TODO: Add threshold function()
+                if(getDataByYear(global.year)[row][i]>=1000){
+                    addArc(arcs, row, i);
                 }
             }
             /* Old way

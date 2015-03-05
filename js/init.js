@@ -9,10 +9,12 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui", "readdata" ],
         $( "#slider" ).slider({
             value: 1970,
             min: 1960,
-            max: 2020,
+            max: 2000,
             step: 10,
             slide: function( event, ui ){
+                console.log(ui.value);
                global.year = ui.value; 
+               global.map.update(); 
             }
         });
 		global.year=1970;
