@@ -33,7 +33,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
 
 	return function(geo) {
-		map.svg.selectAll('path.datamaps-arc').remove();
+		global.map.svg.selectAll('path.datamaps-arc').remove();
 		//prevent spurious calls
 		if(!global.map || typeof geo.properties === "undefined") { return }
         global.country = geo.properties.name;
