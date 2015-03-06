@@ -1,4 +1,4 @@
-define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap"],
+define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readdata"],
 	function($,d3,topojson,Datamap,jqueryui,updateMap) {
 
     /* This is how you would bind an event to the slider from here,
@@ -32,10 +32,12 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap"],
 	}));*/
 
     //TODO: Sane coloring, remove row argument, replace with better solution
-    
+    map.update = function() { updateMap(); } 
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
-        updateMap(geo);
+            global.country = geo.properties.name;
+            global.id = geo.id;
+            map.update();
     });
 
     return map;

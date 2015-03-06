@@ -1,19 +1,22 @@
 define(["jquery","data/util","data/migration"],function($,util,migration) {
 	var row = "", code = "";
-    var arcs = [];
-	function addArc(array, origin, destination, row){
+    
+	function addArc(array, origin, destination){
+
+        var originCode = util.countryorder[origin];
+        var destinationCode = util.countryorder[Number(destination)];
         array.push({
             "origin": {
-                "latitude": util.positions[origin][0],
-                "longitude": util.positions[origin][1],
+                "latitude": util.positions[originCode][0],
+                "longitude": util.positions[originCode][1],
             },
             "destination": {
-                "latitude": util.positions[destination][0],
-                "longitude": util.positions[destination][1],
+                "latitude": util.positions[destinationCode][0],
+                "longitude": util.positions[destinationCode][1],
             },
             "options": {
-                "strokeWidth": lineWidth(migration[global.year][row][i]),
-                "strokeColor": strokeColor(origin, destination, migration[global.year][row][i]),
+                "strokeWidth": 2,//lineWidth(migration[global.year][row][i]),
+                "strokeColor": strokeColor(global.year, origin, destination),//strokeColor(origin, destination, migration[global.year][row][i]),
             }
         });
     };
@@ -24,7 +27,8 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         //Old way: Math.log(migration[global.year][row][i]),
     }
     //Decide color of line on map
-    function strokeColor(origin, destination, value){
+    function strokeColor(year, origin, destination){
+        
         function RGBComponent() {
             return Math.round(Math.random() * 255);
         }
@@ -32,21 +36,38 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         // return '#'+Math.floor(Math.random()*16777215).toString(16);
     }
 
-	return function(geo) {
+    function getCountryId(code){
+        return util.countryorder.indexOf(code);
+    }
+    //Make globals for startyear, endyear?
+    function getDataByYear(year){
+        return global.migrationData[(year-1960)/10];
+    }
+
+	return function() {
+
+        var arcs = [];
+        var code = global.id;
 		global.map.svg.selectAll('path.datamaps-arc').remove();
 		//prevent spurious calls
-		if(!global.map || typeof geo.properties === "undefined") { return }
-        global.country = geo.properties.name;
-        code = geo.id;
+		
         row = util.countryorder.indexOf(code);
-        if (row === -1) { console.log(geo.id + " not found") }
+        if (row === -1) { console.log(code + " not found"); }
         else {
+            for(i in getDataByYear(global.year)){
+
+                //TODO: Add threshold function()
+                if(getDataByYear(global.year)[row][i]>=1000){
+                    addArc(arcs, row, i);
+                }
+            }
+            /* Old way
             for(i in migration[global.year][row]) {
                 if(migration[global.year][row][i] >= 1000) {
                     //TODO: better threshold for drawing line
                     addArc(arcs, code, util.countryorder[i], row);
                 }
-            }
+            }*/
             global.map.arc(arcs);
        }
 
@@ -59,4 +80,5 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         } 
         global.map.updateChoropleth(colors);
 	};
+
 });

@@ -1,6 +1,7 @@
 define({
 countryorder: ["AFG","ALB","DZA","ASM","AND","AGO","AIA","ATG","ARG","ARM","ABW","AUS","AUT","AZE","BHS","BHR","BGD","BRB","BLR","BEL","BLZ","BEN","BMU","BTN","BOL","BIH","BWA","BRA","BRN","BGR","BFA","BDI","KHM","CMR","CAN","CPV","CYM","CAF","TCD","CHI","CHL","CHN","COL","COM","COD","COG","COK","CRI","CIV","HRV","CUB","CYP","CZE","DNK","DJI","DMA","DOM","ECU","EGY","SLV","GNQ","ERI","EST","ETH","FRO","FLK","FJI","FIN","FRA","GUF","PYF","GAB","GMB","GEO","DEU","GHA","GIB","GRC","GRL","GRD","GLP","GUM","GTM","GIN","GNB","GUY","HTI","HND","HKG","HUN","ISL","IND","IDN","IRN","IRQ","IRL","IMY","ISR","ITA","JAM","JPN","JOR","KAZ","KEN","KIR","PRK","KOR","KSV","KWT","KGZ","LAO","LVA","LBN","LSO","LBR","LBY","LIE","LTU","LUX","MAC","MKD","MDG","MWI","MYS","MDV","MLI","MLT","MHL","MTQ","MRT","MUS","MYT","MEX","FSM","MDA","MCO","MNG","MNE","MSR","MAR","MOZ","MMR","NAM","NRU","NPL","NLD","ANT","NCL","NZL","NIC","NER","NGA","NIU","NFK","MNP","NOR","OMN","PAK","PLW","PAN","PNG","PRY","PER","PHL","POL","PRT","PRI","QAT","REU","ROM","RUS","RWA","SHN","SPM","WSM","SMR","STP","SAU","SEN","SRB","SCG","SYC","SLE","SGP","SVK","SVN","SLB","SOM","ZAF","ESP","LKA","KNA","LCA","VCT","SDN","SUR","SWZ","SWE","CHE","SYR","TWN","TJK","TZA","THA","TLS","TGO","TKL","TON","TTO","TUN","TUR","TKM","TCA","TUV","UGA","UKR","ARE","GBR","USA","URY","UZB","VUT","VEN","VNM","VIR","VGB","WLF","PSE","YEM","ZMB","ZWE"],
 countrycodes: [
+  ["Afghanistan", "AFG"],
   ["Albania","ALB"],
   ["Algeria","DZA"],
   ["American Samoa","ASM"],
@@ -247,6 +248,9 @@ countrycodes: [
 positions: {
   "ALB":[41,20],
   "DZA":[28,3],
+  "CHI":[0,0],
+  "IMY":[0,0],
+  "KSV":[0,0],
   "ASM":[-14.3333,-170],
   "AND":[42.5,1.6],
   "AGO":[-12.5,18.5],
@@ -409,6 +413,7 @@ positions: {
   "MNP":[15.2,145.75],
   "NOR":[62,10],
   "OMN":[21,57],
+  "AFG":[20, 57],
   "PAK":[30,70],
   "PLW":[7.5,134.5],
   "PSE":[32,35.25],
@@ -424,6 +429,7 @@ positions: {
   "QAT":[25.5,51.25],
   "REU":[-21.1,55.6],
   "ROU":[46,25],
+  "ROM":[46,25],
   "RUS":[60,100],
   "RWA":[-2,30],
   "SHN":[-15.9333,-5.7],
@@ -437,6 +443,7 @@ positions: {
   "SAU":[25,45],
   "SEN":[14,-14],
   "SRB":[44,21],
+  "SCG":[44,21],
   "SYC":[-4.5833,55.6667],
   "SLE":[8.5,-11.5],
   "SGP":[1.3667,103.8],
