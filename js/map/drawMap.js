@@ -14,7 +14,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap"],
         element: $('#mapContainer')[0],
         projection: 'mercator',
         data: {},
-        fills: { defaultFill: "#3498db"},
+        fills: { defaultFill: "#2C2C43"},
         geographyConfig: {
             highlightOnHover: false,
             popupTemplate: function(geo,data) {
