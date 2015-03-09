@@ -23,13 +23,13 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         },
     });
 
-	// Set zooming
-	/* Fuck Zooming. 
+	// Set zooming 
+	 
     d3.select('.map').select('g').selectAll('path').style('vector-effect', 'non-scaling-stroke');
 	map.svg.call(d3.behavior.zoom().on("zoom", function() {
 		map.svg.selectAll("g")
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-	}));*/
+	}));
 
     //TODO: Sane coloring, remove row argument, replace with better solution
     map.update = function() { updateMap(); } 
