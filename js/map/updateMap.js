@@ -1,6 +1,6 @@
 define(["jquery","data/util","data/migration"],function($,util,migration) {
 	var row = "", code = "";
-    var arcs = [], bubbles = [], colors = [], data = [];
+    var arcs = [], bubbles = [], colors = [];
     
 	function addArc(array,origin, destination){
         var originCode = util.countryorder[origin];
@@ -59,7 +59,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
 
 	return function() {
         
-        var descriptionText = "Immigration from:<br/>"
+        var descriptionText = "Immigration from:<br/>";
         
         var cc = [];
         for(i in util.countrycodes){
@@ -95,26 +95,20 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
        // if fillkeys are used you can use it to assign a {fillKey: , value: }
         
 
-        colors = [];
+         colors = [];
         for (i in util.countryorder) {
-            //console.log(util.countryorder[i]); 
+            console.log(util.countryorder[i]); 
             colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
         } 
         for(i in global.continent){
             //TODO: Add population variable to the colors
-            console.log(global.continent[i]);
-            if(global.continent[i]=="AF"){
-                colors[cc[i]]= 'yellow';
-            }else if(global.continent[i]=="EU"){
-                colors[cc[i]]= 'blue';
-            }else if(global.continent[i]=="OC"){
-                colors[cc[i]]= 'black';
-            }else if(global.continent[i]=="NA"){
-                colors[cc[i]]= 'pink';
-            }else if(global.continent[i]=="SA"){
-                colors[cc[i]]= 'green';
-            }else if(global.continent[i]=="AS"){
-                colors[cc[i]]= 'red';
+            switch(global.continent[i]) {
+                case "AF": colors[cc[i]] = { fillKey: "africa" }; break;
+                case "EU": colors[cc[i]] = { fillKey: "europe" }; break;
+                case "NA": colors[cc[i]] = { fillKey: "north_america" }; break;
+                case "SA": colors[cc[i]] = { fillKey: "south_america" }; break;
+                case "AS": colors[cc[i]] = { fillKey: "asia" }; break;
+                default: colors[cc[i]] = { fillKey: "default" };
             }
         }
         global.map.updateChoropleth(colors);
