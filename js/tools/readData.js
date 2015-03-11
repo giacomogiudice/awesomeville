@@ -20,8 +20,8 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 	        		console.log(global.migrationData);
 	        	}
         	});*/
-
-			d3.text("http://giacomogiudice.github.io/awesomeville/raw/"+yearString+".csv", function(text) {
+	
+			d3.text("http://giacomogiudice.github.io/awesomeville/raw/"+yearString+".csv", function(text){
 				dataByYear.push(d3.csv.parseRows(text));
 				if( (lastYear-firstYear)/interval == dataByYear.length ){
 	        		dataLoaded=true;
@@ -29,7 +29,12 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 	        	}
 			});
 		}
-		
+
+		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/contryByContinent.csv", function(d){
+			console.log(d); 
+		});
+
+
 
 	});
 
