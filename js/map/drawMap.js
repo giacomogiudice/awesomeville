@@ -16,12 +16,13 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         data: {},
         fills: { 
             defaultFill: "#2C2C43",
+            // continents
             africa: "#f39c12",
             europe: "#2980b9",
             oceania: "#16a085",
             north_america: "#e74c3c",
             south_america: "#2ecc71",
-            asia: "#9b59b6"
+            asia: "#9b59b6",          
         },
         geographyConfig: {
             highlightOnHover: false,
@@ -30,7 +31,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
                     return '<div class="hoverlabel">' + geo.properties.name + '</div>';
                 }
                 else {
-                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + data.value + '</sdiv>'
+                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + Math.round(data.value/1000)+ 'K </div>'
                 }
             }
         },
