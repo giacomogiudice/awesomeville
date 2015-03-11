@@ -211,7 +211,7 @@ countrycodes: [
   ["Swaziland","SWZ"],
   ["Sweden","SWE"],
   ["Switzerland","CHE"],
-  ["Syrian Arab Republic","SYR"],
+  ["Syria","SYR"],
   ["Taiwan, Province of China","TWN"],
   ["Tajikistan","TJK"],
   ["Tanzania","TZA"],
