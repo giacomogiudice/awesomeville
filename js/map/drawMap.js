@@ -26,11 +26,11 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         geographyConfig: {
             highlightOnHover: false,
             popupTemplate: function(geo,data) {
-                if(data === null) { 
+                if(data === null || data.value === null) { 
                     return '<div class="hoverlabel">' + geo.properties.name + '</div>';
                 }
                 else {
-                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + data + '</div>'
+                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + data.value + '</sdiv>'
                 }
             }
         },

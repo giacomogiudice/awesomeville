@@ -66,6 +66,26 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             cc[util.countrycodes[i][0]] = util.countrycodes[i][1];
         }
 
+        // handle contry colors
+        // colors is the object mapping countrycode -> color
+        // if fillkeys are used you can use it to assign a {fillKey: , value: }
+        colors = [];
+        for (i in util.countryorder) {
+            console.log(util.countryorder[i]); 
+            colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
+        } 
+        for(i in global.continent){
+            //TODO: Add population variable to the colors
+            switch(global.continent[i]) {
+                case "AF": colors[cc[i]] = { fillKey: "africa", value: null}; break;
+                case "EU": colors[cc[i]] = { fillKey: "europe", value: null }; break;
+                case "NA": colors[cc[i]] = { fillKey: "north_america", value: null }; break;
+                case "SA": colors[cc[i]] = { fillKey: "south_america", value: null }; break;
+                case "AS": colors[cc[i]] = { fillKey: "asia", value: null }; break;
+                default: colors[cc[i]] = { fillKey: "default", value: null };
+            }
+        }
+
         var code = global.id;
 		global.map.svg.selectAll('path.datamaps-arc').remove();
 		//prevent spurious calls
@@ -79,6 +99,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 //TODO: Add threshold function()
                 if(getDataByYear(global.year)[row][i]>=1000){
                     addArc(arcs,row, i);
+                    colors[util.countryorder[i]].value = getDataByYear(global.year)[row][i]
                     descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
                 }
             }
@@ -86,31 +107,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             global.map.arc(arcs);
         }
 
-        /*for(i in global.continent){
-            console.log(coun);
-        }*/
-        
-       // handle contry colors
-       // colors is the object mapping countrycode -> color
-       // if fillkeys are used you can use it to assign a {fillKey: , value: }
-        
-
-         colors = [];
-        for (i in util.countryorder) {
-            console.log(util.countryorder[i]); 
-            colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
-        } 
-        for(i in global.continent){
-            //TODO: Add population variable to the colors
-            switch(global.continent[i]) {
-                case "AF": colors[cc[i]] = { fillKey: "africa" }; break;
-                case "EU": colors[cc[i]] = { fillKey: "europe" }; break;
-                case "NA": colors[cc[i]] = { fillKey: "north_america" }; break;
-                case "SA": colors[cc[i]] = { fillKey: "south_america" }; break;
-                case "AS": colors[cc[i]] = { fillKey: "asia" }; break;
-                default: colors[cc[i]] = { fillKey: "default" };
-            }
-        }
         global.map.updateChoropleth(colors);
         //handle bubbles;
         bubbles = [];
