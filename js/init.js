@@ -4,7 +4,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui", "readdata" ],
 		var w = $(window).width();
 		var h = $(window).height();
 
-		//$("#mapContainer").height("100%");
+        $("#selectable").selectable();
     
         $( "#slider" ).slider({
             value: 1970,

@@ -72,13 +72,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                     addArc(arcs,row, i);
                 }
             }
-            /* Old way
-            for(i in migration[global.year][row]) {
-                if(migration[global.year][row][i] >= 1000) {
-                    //TODO: better threshold for drawing line
-                    addArc(arcs, code, util.countryorder[i], row);
-                }
-            }*/
+            
             global.map.arc(arcs);
        }
 
@@ -90,7 +84,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             colors[util.countryorder[i]] = '#'+Math.floor(Math.random()*16777215).toString(16);
         } 
         global.map.updateChoropleth(colors);
-        console.log(bubbles)
         //handle bubbles;
         bubbles = [];
         for (i in util.countryorder) {

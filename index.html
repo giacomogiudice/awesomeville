@@ -12,48 +12,30 @@
 	<script src="js/global.js"></script>
 	<script data-main="js/main.js" src="js/lib/require.js"></script>
 
-
-	<style>
-  #feedback { font-size: .4em; }
-  #selectable .ui-selecting { background: #6E7073; }
-  #selectable .ui-selected { background: #222234; color: white;  }
-  #selectable { list-style-type: none; margin: 0; padding: 0; width: 40%; }
-  #selectable li { margin: 3px; padding: 0.2em;  font-size: 1em; height: 18px; }
-  </style>
-  <script>
-  $(function() {
-    $( "#selectable" ).selectable();
-
-  });
-  </script>
-
-
-
-
 </head>
 <body>
-	<h2 style="color:white"> <center>Migration Map</center></h2>
-	<div id="container" style="height:100%; width:100%">
-		<div id="mapContainer" style="position:absolute; top:0px; left:10%; height:95%; width:70%" ></div>
-		<div id="rightContainer" >
+	<h2> <center>Migration Map</center></h2>
+	<div id="container">
+		<div id="mapContainer"></div>
+		<div id="rightContainer">
 
 			<h2>Explanation </h2>
 			<hr>			
-			<p style="color:red"; width:250px >hej hej hej  </p>
+			<p style="color:red; width:250px">hej hej hej  </p>
 	
 
 		</div>
 		<div id="leftButtons" >
 					<ol id="selectable">
   <li class="ui-widget-content">Europa</li>
-  <li class="ui-widget-content">Afrika</li>
+  <li class="ui-widget-content">Africa</li>
   <li class="ui-widget-content">America</li>
 </ol>
 
 
 		</div>
 
-		<div id="TimeSliderContainer" style="color:white; position:absolute; bottom:5px; width:50%; left:25%;">
+		<div id="TimeSliderContainer">
 		   <div id="slider"></div>
 		</div>
 	</div>
