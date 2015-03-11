@@ -30,7 +30,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             "fillKey": "default"
         });
     }
-    
+
     //Decide how wide to draw a line
     function lineWidth(value){
         return 2; 
@@ -54,10 +54,18 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return global.migrationData[(year-1960)/10];
     }
 
+
+    
+
 	return function() {
         
         var descriptionText = "Immigration from:<br/>"
         
+        var cc = [];
+        for(i in util.countrycodes){
+            cc[util.countrycodes[i][0]] = util.countrycodes[i][1];
+        }
+
         var code = global.id;
 		global.map.svg.selectAll('path.datamaps-arc').remove();
 		//prevent spurious calls
@@ -74,17 +82,41 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                     descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
                 }
             }
-            
-            global.map.arc(arcs);
-       }
 
+            global.map.arc(arcs);
+        }
+
+        /*for(i in global.continent){
+            console.log(coun);
+        }*/
+        
        // handle contry colors
        // colors is the object mapping countrycode -> color
        // if fillkeys are used you can use it to assign a {fillKey: , value: }
+        
+
         colors = [];
         for (i in util.countryorder) {
-            colors[util.countryorder[i]] = '#'+Math.floor(Math.random()*16777215).toString(16);
+            //console.log(util.countryorder[i]); 
+            colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
         } 
+        for(i in global.continent){
+            //TODO: Add population variable to the colors
+            console.log(global.continent[i]);
+            if(global.continent[i]=="AF"){
+                colors[cc[i]]= 'yellow';
+            }else if(global.continent[i]=="EU"){
+                colors[cc[i]]= 'blue';
+            }else if(global.continent[i]=="OC"){
+                colors[cc[i]]= 'black';
+            }else if(global.continent[i]=="NA"){
+                colors[cc[i]]= 'pink';
+            }else if(global.continent[i]=="SA"){
+                colors[cc[i]]= 'green';
+            }else if(global.continent[i]=="AS"){
+                colors[cc[i]]= 'red';
+            }
+        }
         global.map.updateChoropleth(colors);
         //handle bubbles;
         bubbles = [];
