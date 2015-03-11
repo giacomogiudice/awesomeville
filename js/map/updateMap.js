@@ -42,12 +42,14 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
     //Decide color of line on map
     function strokeColor(size){
-        if(size <= 1000) { return "rgba(114,118,121,0.6)"; }
-        else if(size <= 5000) { return "rgba(131,104,105,0.6)"; }
-        else if(size <= 10000) { return "rgba(149,50,50,0.6)"; }
-        else if(size <= 50000) { return "rgba(166,75,75,0.6)"; }
-        else if(size <= 100000) { return "rgba(184,62,58,0.6)"; }
-        else { return "rgba(202,48,43,0.6)"; }
+        var choice;
+        if(size <= 1000) { choice = 0; }
+        else if(size <= 5000) { choice = 1; }
+        else if(size <= 10000) { choice = 2; }
+        else if(size <= 50000) { choice = 3; }
+        else if(size <= 100000) { choice = 4; }
+        else { choice = 5; }
+        return util.linegradient[choice];
     }
 
     function getCountryId(code){

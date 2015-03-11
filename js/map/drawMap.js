@@ -45,8 +45,9 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	}));*/
 
-    //TODO: Sane coloring, remove row argument, replace with better solution
+    
     map.update = function() { updateMap(); } 
+
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
         global.country = geo.properties.name;
