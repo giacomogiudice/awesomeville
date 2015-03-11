@@ -22,7 +22,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
             oceania: "#16a085",
             north_america: "#e74c3c",
             south_america: "#2ecc71",
-            asia: "#9b59b6",          
+            asia: "#9b59b6",       
         },
         geographyConfig: {
             highlightOnHover: false,

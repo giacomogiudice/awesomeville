@@ -60,9 +60,23 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return global.migrationData[(year-1960)/10];
     }
 
-    function getTopX(origin, X){
-        console.log(origin); 
-        console.log(X); 
+    function getThreshold(origin, X){
+        //O(XN) function to get Xth largest value
+        var largestInRound = 10000000;
+        var temp = +0;
+        var v = -1; 
+        for(var j = 0; j < X; j++ ){
+            for( i in  getDataByYear(global.year)[origin]){
+                t = getDataByYear(global.year)[origin][i]; 
+                if( parseInt(t)>parseInt(temp) && parseInt(t)<parseInt(largestInRound) ){
+                    temp = t;
+                }
+            }
+            largestInRound=temp;
+            t=0;
+            temp=0;
+        }
+        return parseInt(largestInRound); 
     }
     
 
@@ -75,9 +89,10 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         // if fillkeys are used you can use it to assign a {fillKey: , value: }
         colors = [];
         for (i in util.countryorder) {
-            console.log(util.countryorder[i]); 
+            //console.log(util.countryorder[i]); 
             colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
-        } 
+        }
+
         for(i in global.continent){
             //TODO: Add population variable to the colors
             switch(global.continent[i]) {
@@ -99,10 +114,12 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         if (row === -1) { console.log(code + " not found"); }
         else {
             arcs = [];
+            var threshold = getThreshold(row, 5);
+            console.log(threshold);
             for(i in getDataByYear(global.year)){
 
                 //TODO: Add threshold function()
-                if(getDataByYear(global.year)[row][i]>=1000){
+                if(getDataByYear(global.year)[row][i]>=threshold){
                     addArc(arcs, row, i, getDataByYear(global.year)[row][i]);
                     colors[util.countryorder[i]].value = getDataByYear(global.year)[row][i];
                     descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
