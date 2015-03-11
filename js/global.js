@@ -4,6 +4,7 @@ var global = {
 	id: "",
 	country: "",
 	migrationDataLoaded: false, 
-	migrationData: []
+	migrationData: [],
+	continent: []
 };
 
