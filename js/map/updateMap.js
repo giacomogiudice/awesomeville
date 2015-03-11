@@ -105,19 +105,16 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }
-
         var code = global.id;
-		global.map.svg.selectAll('path.datamaps-arc').remove();
-		
+		//global.map.svg.selectAll('path.datamaps-arc').remove();
 		
         row = util.countryorder.indexOf(code);
         if (row === -1) { console.log(code + " not found"); }
         else {
             arcs = [];
-            var threshold = getThreshold(row, 5);
-            console.log(threshold);
-            for(i in getDataByYear(global.year)){
+            var threshold = getThreshold(row, 10);
 
+            for(i in getDataByYear(global.year)){
                 //TODO: Add threshold function()
                 if(getDataByYear(global.year)[row][i]>=threshold){
                     addArc(arcs, row, i, getDataByYear(global.year)[row][i]);
@@ -125,7 +122,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                     descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
                 }
             }
-
             global.map.arc(arcs);
         }
 
