@@ -54,7 +54,10 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return global.migrationData[(year-1960)/10];
     }
 
-
+    function getTopX(origin, X){
+        console.log(origin); 
+        console.log(X); 
+    }
     
 
 	return function() {
@@ -95,7 +98,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
        // if fillkeys are used you can use it to assign a {fillKey: , value: }
         
 
-         colors = [];
+        colors = [];
         for (i in util.countryorder) {
             console.log(util.countryorder[i]); 
             colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
