@@ -28,6 +28,8 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 	        		global.migrationData = dataByYear;
 	        	}
 			});
-
 		}
+		
+
 	});
+
