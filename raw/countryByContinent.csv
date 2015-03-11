@@ -1,6 +1,6 @@
 Asia,Europe,North America,South America,Africa,Oceania
 Afghanistan,Russian Federation,United States,Brazil,Nigeria,Australia
-Bahrain,Germany,Mexico,Colombia,Ethiopia,Papua New Guinea
+Bahrain,Germany,Mexico,Colombia,Ethiopia,,
 Bangladesh,Turkey,Canada,Argentina,Egypt,New Zealand
 Bhutan,United Kingdom,Guatemala,Peru,Democratic Republic of the Congo,Fiji
 Brunei,France,Cuba,Venezuela,South Africa,Solomon Islands
@@ -44,7 +44,7 @@ Uzbekistan,Cyprus,,,Namibia,
 Vietnam,Montenegro,,,Botswana,
 Yemen,Luxembourg,,,Gambia,
 Myanmar,Malta,,,Equatorial Guinea,
-,Iceland,Greenland,Lesotho,
+Papua New Guinea,Iceland,Greenland,Lesotho,
 ,Jersey (UK),,,Guinea-Bissau,
 ,Isle of Man (UK),,,Mauritius,
 ,Andorra,,,Swaziland,

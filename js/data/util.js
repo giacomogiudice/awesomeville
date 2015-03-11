@@ -212,7 +212,7 @@ countrycodes: [
   ["Sweden","SWE"],
   ["Switzerland","CHE"],
   ["Syria","SYR"],
-  ["Taiwan, Province of China","TWN"],
+  ["Taiwan","TWN"],
   ["Tajikistan","TJK"],
   ["Tanzania","TZA"],
   ["Thailand","THA"],
