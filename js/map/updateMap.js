@@ -80,6 +80,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             switch(global.continent[i]) {
                 case "AF": colors[cc[i]] = { fillKey: "africa", value: null}; break;
                 case "EU": colors[cc[i]] = { fillKey: "europe", value: null }; break;
+                case "OC": colors[cc[i]] = { fillKey: "oceania", value: null }; break;
                 case "NA": colors[cc[i]] = { fillKey: "north_america", value: null }; break;
                 case "SA": colors[cc[i]] = { fillKey: "south_america", value: null }; break;
                 case "AS": colors[cc[i]] = { fillKey: "asia", value: null }; break;
