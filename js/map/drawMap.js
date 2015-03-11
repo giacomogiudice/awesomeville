@@ -16,21 +16,22 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         data: {},
         fills: { 
             defaultFill: "#2C2C43",
+            // continents
             africa: "#f39c12",
             europe: "#2980b9",
             oceania: "#16a085",
             north_america: "#e74c3c",
             south_america: "#2ecc71",
-            asia: "#9b59b6"
+            asia: "#9b59b6",          
         },
         geographyConfig: {
             highlightOnHover: false,
             popupTemplate: function(geo,data) {
-                if(data === null) { 
+                if(data === null || data.value === null) { 
                     return '<div class="hoverlabel">' + geo.properties.name + '</div>';
                 }
                 else {
-                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + data + '</div>'
+                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + Math.round(data.value/1000)+ 'K </div>'
                 }
             }
         },
@@ -44,8 +45,9 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	}));*/
 
-    //TODO: Sane coloring, remove row argument, replace with better solution
+    
     map.update = function() { updateMap(); } 
+
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
         global.country = geo.properties.name;

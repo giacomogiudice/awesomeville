@@ -1,4 +1,4 @@
-define(["jquery","map/drawMap","map/updateMap", "jqueryui", "readdata" ],
+define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 	function($,drawMap,updateMap) {
 	$(function() {
 		var w = $(window).width();
@@ -19,7 +19,6 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui", "readdata" ],
         });
 		global.year=1970;
 
-		global.map = drawMap;
-		updateMap(global.map);
+        global.map = drawMap;
 	});
 });
