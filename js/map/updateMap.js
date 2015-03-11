@@ -30,7 +30,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             "fillKey": "default"
         });
     }
-
+    
     //Decide how wide to draw a line
     function lineWidth(value){
         return 2; 
