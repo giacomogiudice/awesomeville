@@ -1,6 +1,6 @@
 define(["jquery","data/util","data/migration"],function($,util,migration) {
 	var row = "", code = "";
-    var arcs = [], bubbles = [], colors = [];
+    var arcs = [], bubbles = [], colors = [], data = [];
     
 	function addArc(array,origin, destination){
         var originCode = util.countryorder[origin];
@@ -55,7 +55,8 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
 
 	return function() {
-
+        
+        var descriptionText = "Immigration from:<br/>"
         
         var code = global.id;
 		global.map.svg.selectAll('path.datamaps-arc').remove();
@@ -70,6 +71,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 //TODO: Add threshold function()
                 if(getDataByYear(global.year)[row][i]>=1000){
                     addArc(arcs,row, i);
+                    descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
                 }
             }
             
@@ -90,6 +92,8 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             if(Math.random() <0.05) addBubble(bubbles,"",util.countryorder[i],Math.random()*50);
         }
         global.map.bubbles(bubbles);
+        $("#title").text(global.country); 
+        $("#description").html(descriptionText);
 	};
 
 });

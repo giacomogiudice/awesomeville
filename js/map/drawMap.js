@@ -35,9 +35,9 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
     map.update = function() { updateMap(); } 
 	//add onlick event
 	map.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
-            global.country = geo.properties.name;
-            global.id = geo.id;
-            map.update();
+        global.country = geo.properties.name;
+        global.id = geo.id;
+        map.update();
     });
 
     return map;
