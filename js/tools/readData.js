@@ -8,7 +8,6 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 		var interval = 10;
 		var dataLoaded = false;
 		var continent = [];
-		var 
 		
 		for(var i = firstYear; i <= lastYear; i+= interval){
         	var yearString = i.toString();
@@ -57,9 +56,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 		});
 
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/warData.csv", function(d){
-			console.log(d); 
-
-			global.war = d;
+			console.log(d);
 		});
 
 	});
