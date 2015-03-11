@@ -5,6 +5,7 @@ var global = {
 	country: "",
 	migrationDataLoaded: false, 
 	migrationData: [],
-	continent: []
+	continent: [],
+	war: {},
 };
 
