@@ -67,7 +67,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 			return {
 				start: +d["Beginning Year"],
 				code: d["Country"],
-				involved: d["SideA (Government of)"] + " vs. " + d["SideB"],
+				involved: d["SideA ()"] + " vs. " + d["SideB"],
 				description: d["Description"]
 			};
 		}, function(error, rows) {

@@ -26,9 +26,10 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         });
     };
 
-    function addBubble(array,name,code,radius) {
+    function addBubble(array,name,description,code,radius) {
         array.push({
             "name": name,
+            "description": description,
             "latitude": util.positions[code][0],
             "longitude": util.positions[code][1],
             "radius": radius,
@@ -144,13 +145,10 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         bubbles = [];
         for (i in global.war) {
             if(global.war[i].start >= year && global.war[i].start < year+10) {
-                //addBubble(bubbles,global.war[i].involved,global.war[i].code,20);
+                addBubble(bubbles,global.war[i].involved,global.war[i].description,global.war[i].code,10);
             }
         }
-        for (i in util.countryorder) {
-            if(Math.random() <0.05) addBubble(bubbles,"",util.countryorder[i],Math.random()*50);
-        }
-        global.map.bubbles(bubbles);
+        global.map.bubbles(bubbles,global.map.options.bubblesConfig);
         $("#title").text(global.country); 
         $("#description").html(descriptionText);
 	};
