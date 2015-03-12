@@ -49,7 +49,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             "end": war.end,
             "latitude": lat,
             "longitude": lon,
-            "radius": Math.log(war.size/(1 + war.end - war.start)),
+            "radius": 2*Math.log(war.size/(1 + war.end - war.start)),
             "fillKey": "defaultFill"
         });
     }
@@ -147,11 +147,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         // colors is the object mapping countrycode -> color
         // if fillkeys are used you can use it to assign a {fillKey: , value: }
         colors = [];
-        for (i in util.countryorder) {
-            //console.log(util.countryorder[i]); 
-            colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
-        }
-
+        
         var maxSaturation = getMaxGdp(); 
         var saturation = 0;
         var code = ""; 
@@ -177,10 +173,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }
-
-
-
-
 
         var code = global.id;
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
@@ -210,7 +202,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         //handle bubbles;
         bubbles = [];
         for (i in global.war) {
-            if(global.war[i].start >= global.year && global.war[i].end <= global.year) {
+            if(global.war[i].start <= global.year && global.war[i].end >= global.year) {
                 addBubble(bubbles,global.war[i]);
             }
         }
