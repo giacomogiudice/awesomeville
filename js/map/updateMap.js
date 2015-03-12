@@ -190,6 +190,9 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         else {
             arcs = [];
             var threshold = getThreshold(row, 10);
+            if (threshold<1){
+                threshold=1; 
+            }
 
             for(i in getDataByYear(year)){
                 //TODO: Add threshold function()

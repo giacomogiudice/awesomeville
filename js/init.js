@@ -29,7 +29,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         $( "#slider" ).slider({
             value: 1970,
-            min: 1960,
+            min: 1959,
             max: 2001,
             step: 1,
             slide: function( event, ui ){
