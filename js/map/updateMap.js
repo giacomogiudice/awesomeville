@@ -26,16 +26,18 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         });
     };
 
-    function addBubble(array,name,description,code,radius) {
-        array.push({
-            "name": name,
-            "description": description,
-            "latitude": util.positions[code][0],
-            "longitude": util.positions[code][1],
-            "radius": radius,
-            "fillKey": "default"
-        });
-    }
+    // function addBubble(array,name,size,start,end,code,radius) {
+    //     array.push({
+    //         "name": name,
+    //         "size": size,
+    //         "start": start,
+    //         "end": end,
+    //         "latitude": util.positions[code][0],
+    //         "longitude": util.positions[code][1],
+    //         "radius": radius,
+    //         "fillKey": "defaultFill"
+    //     });
+    // }
 
     //Decide how wide to draw a line
     function lineWidth(value){
@@ -143,9 +145,34 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         global.map.updateChoropleth(colors);
         //handle bubbles;
         bubbles = [];
+        var lat,lon,codes;
         for (i in global.war) {
             if(global.war[i].start >= year && global.war[i].start < year+10) {
-                addBubble(bubbles,global.war[i].involved,global.war[i].description,global.war[i].code,10);
+                // addBubble(bubbles,global.war[i].name,global.,global.war[i].code,10);
+                codes = global.war[i].code.split('/');
+                if(codes.length === 1) {
+                    lat = util.positions[codes[0]][0];
+                    lon = util.positions[codes[1]][1]
+                }
+                else {
+                    for (int j in codes) {
+                        lat += util.positions[codes[j]][0];
+                        lon += util.positions[codes[j]][1];
+                    }
+                    lat /= codes.length;
+                    lon /= codes.length;
+                }
+                bubbles.push({
+
+                    "name": global.war[i].name,
+                    "size": global.war[i].size,
+                    "start": global.war[i].start,
+                    "end": global.war[i].end,
+                    "latitude": len,
+                    "longitude": lon,
+                    "radius": global.war[i].size/1000,
+                    "fillKey": "defaultFill"
+                });
             }
         }
         global.map.bubbles(bubbles,global.map.options.bubblesConfig);

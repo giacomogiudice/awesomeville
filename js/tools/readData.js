@@ -65,10 +65,11 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/warData.csv", function(d){
 			return {
-				start: +d["Beginning Year"],
-				code: d["Country"],
-				involved: d["SideA ()"] + " vs. " + d["SideB"],
-				description: d["Description"]
+				name: d["Name of War"],
+				code: d["Country code"],
+				start: +d["Start Year"],
+				end: +d["End year"],
+				size: +d["Fatalities"]
 			};
 		}, function(error, rows) {
   		global.war = rows;
