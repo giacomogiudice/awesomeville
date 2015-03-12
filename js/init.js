@@ -25,6 +25,9 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             slide: function( event, ui ){
                global.year = ui.value;
                global.map.update();
+               var currentSliderValue = $("#slider").slider("option", "value");
+	       //console.log(currentSliderValue);
+	       $("#currentSliderValue").html(currentSliderValue);
             }
         });
 		global.year=1970;
