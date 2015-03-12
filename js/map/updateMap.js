@@ -181,7 +181,9 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
 		
         row = util.countryorder.indexOf(code);
-        if (row === -1) { console.log(code + " not found"); }
+        if (row === -1) {
+        //    console.log(code + " not found"); 
+        }
         else {
             arcs = [];
             var threshold = getThreshold(row, 10);

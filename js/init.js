@@ -31,26 +31,27 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             value: 1970,
             min: 1960,
             max: 2000,
-            step: 1,
-            animate: 1000,
+            step: 0.01,
+            animate: 100,
             slide: function( event, ui ){
-                global.year = ui.value;
-                setGdp(ui.value); 
+                global.year = parseInt(ui.value);
+                setGdp(parseInt(i.value)); 
                 global.map.update();
 
                //var currentSliderValue = $("#slider").slider("option", "value");
 	           //console.log(currentSliderValue);
-	           $("#currentSliderValue").html(ui.value);
+	           $("#currentSliderValue").html(parseInt(ui.value));
             }
         });
 
         function playFunction(){
                     var a = $("#slider").slider("option", "value");
-                    a+=1;
+                    a+=0.01;
                     $("#slider").slider("value", a);
-                    a = $("#slider").slider("option", "value");
+                    a = parseInt($("#slider").slider("option", "value"));
                     global.year = a;
                     setGdp(a);
+                    //console.log(global.year); 
                     $("#currentSliderValue").html(a); 
                     global.map.update();
         }
@@ -64,8 +65,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
                     global.play=true; 
                     console.log("play");
                     //$("#play").text("II"); 
-
-                    timerVar = setInterval(function(){playFunction()}, 1000);
+                    timerVar = setInterval(function(){playFunction()}, 10);
                 }else{
                     //$("#play").text(">"); 
 
