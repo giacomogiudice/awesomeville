@@ -36,8 +36,13 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
                 global.year = ui.value;
                 setGdp(ui.value); 
                 global.map.update();
+
+               var currentSliderValue = $("#slider").slider("option", "value");
+	       //console.log(currentSliderValue);
+	       $("#currentSliderValue").html(currentSliderValue);
             }
         });
+
 		global.year=1970;
         setGdp(); 
 
