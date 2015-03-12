@@ -124,7 +124,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
 
     function getColor(continent, value){
         //console.log(value);
-        var temp = parseInt(value); 
+        var temp = value; 
         //console.log("rgba(0,255,0,"+temp+")");
         switch(continent) {
             case "AF": return "rgba(127,168,44,"+temp+")"; 
@@ -160,7 +160,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             //TODO: base saturation on something inteligent?
             saturation = parseInt(global.gdp[cc[i]])/parseInt(maxSaturation);
             if(isNaN(saturation)){
-                saturation=1;
+                saturation=0.5;
             } else{
                 saturation=1; 
                 //console.log(saturation);

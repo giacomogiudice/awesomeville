@@ -30,7 +30,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
         $( "#slider" ).slider({
             value: 1970,
             min: 1960,
-            max: 2000,
+            max: 2001,
             step: 1,
             slide: function( event, ui ){
                 global.year = ui.value;
