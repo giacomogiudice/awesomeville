@@ -1,12 +1,22 @@
 define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readdata"],
 	function($,d3,topojson,Datamap,jqueryui,updateMap) {
 
+    /* This is how you would bind an event to the slider from here,
+    NOTE: you have to remove the event bound when the slider is created,
+    in init.js to be able to do it from here. 
+    $( "#slider" ).slider({
+      slide: function( event, ui ) {
+        console.log(ui.value*2);
+      }
+    });*/
+
     var map = new Datamap({
         element: $('#mapContainer')[0],
         projection: 'mercator',
         data: {},
         fills: { 
             defaultFill: "#2C2C43",
+            // continents
             africa: "#f39c12",
             europe: "#2980b9",
             oceania: "#16a085",
@@ -21,7 +31,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
                     return '<div class="hoverlabel">' + geo.properties.name + '</div>';
                 }
                 else {
-                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + Math.round(data.value/1000)+ ' thousand</div>'
+                    return '<div class="hoverlabel">' + geo.properties.name + '<br/>' + Math.round(data.value/1000)+ 'K </div>'
                 }
             }
         },
