@@ -8,6 +8,8 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 		var interval = 10;
 		var dataLoaded = false;
 		var continent = [];
+
+
 		
 		for(var i = firstYear; i <= lastYear; i+= interval){
         	var yearString = i.toString();
@@ -32,8 +34,17 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 		}
 
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/GDP.csv", function(d){
-			global.gdpData = d; 
+			global.gdpData = d;
 		});
+
+		/*d3.csv("http://giacomogiudice.github.io/awesomeville/raw/1961.csv", function(d){
+			//console.log(d);
+			//for(i in d){
+				for(j in d[1]){
+					console.log(d[1][j]);
+				}
+			//}
+		});*/
 
 
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/countryByContinent.csv", function(d){

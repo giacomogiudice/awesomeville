@@ -15,15 +15,13 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             }
         }
 
-        console.log(yearAvailable);
         
         function setGdp(year){
             for(i in global.gdpData){
-               //global.gdp[global.gdpData[i][] ]
+                //global.gdp[global.gdpData[i][]]
                 global.gdp[global.gdpData[i]["Country Code"]]=global.gdpData[i][year];
                 //console.log(year); 
                 //console.log(global.gdpData[i][year]);
-
             }
         }
 

@@ -22,7 +22,8 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
             oceania: "#16a085",
             north_america: "#e74c3c",
             south_america: "#2ecc71",
-            asia: "#9b59b6",       
+            asia: "#9b59b6",
+            bubble: "F00000"      
         },
         geographyConfig: {
             highlightOnHover: false,
@@ -37,13 +38,16 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         },
         bubblesConfig: {
             highlightOnHover: false,
-            borderWidth: 0,
-            borderColor: '#FFFFFF',
+            borderWidth: 2,
+            borderColor: 'red',
+            borderOpacity: 0.1,
             fillOpacity: 0.75,
+
             popupTemplate: function(geo,data) {
                 return '<div class="hoverlabel">' + data.name + '<br/>' +
                     Math.round(data.size/1000) + " thousand casualties between " + data.start + " and " + data.end + '</div>';
             }
+
         }
     });
 

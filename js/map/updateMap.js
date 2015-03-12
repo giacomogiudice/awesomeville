@@ -27,7 +27,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     };
 
     function addBubble(array,war) {
-        var lat = 0,lon = 0;
+        var lat = 0, lon = 0;
         var codes;
         codes = war.code.split(' / ');
         if(codes.length === 1) {
@@ -76,7 +76,11 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
     //Make globals for startyear, endyear?
     function getDataByYear(year){
+        /*if(year<1970 && year>1960 ){
+
+        }*/
         return global.migrationData[(year-1960)/10];
+    
     }
 
     function getEmigrationThreshold(origin, X){
@@ -146,6 +150,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         //console.log(value);
         var temp = value; 
         //console.log("rgba(0,255,0,"+temp+")");
+
         switch(continent) {
             case "AF": return "rgba(127,168,44,"+temp+")"; 
             case "EU": return "rgba(162,96,166,"+temp+")";
