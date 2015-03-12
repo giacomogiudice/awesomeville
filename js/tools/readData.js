@@ -60,6 +60,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 			});
 		});
 
+
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/warData.csv", function(d){
 			return {
 				name: d["Name of War"],
