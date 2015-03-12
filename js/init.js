@@ -32,20 +32,56 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             min: 1960,
             max: 2000,
             step: 1,
+            animate: 1000,
             slide: function( event, ui ){
                 global.year = ui.value;
                 setGdp(ui.value); 
                 global.map.update();
 
                //var currentSliderValue = $("#slider").slider("option", "value");
-	       //console.log(currentSliderValue);
+	           //console.log(currentSliderValue);
 	           $("#currentSliderValue").html(ui.value);
             }
         });
+
+        function playFunction(){
+                    var a = $("#slider").slider("option", "value");
+                    a+=1;
+                    $("#slider").slider("value", a);
+                    a = $("#slider").slider("option", "value");
+                    global.year = a;
+                    setGdp(a);
+                    $("#currentSliderValue").html(a); 
+                    global.map.update();
+        }
+
+        var timerVar; 
+        $(function() {
+            $("#play").button()
+              .click(function( event ) {
+                event.preventDefault();
+                if(global.play==false){
+                    global.play=true; 
+                    console.log("play");
+                    //$("#play").text("II"); 
+
+                    timerVar = setInterval(function(){playFunction()}, 1000);
+                }else{
+                    //$("#play").text(">"); 
+
+                    global.play=false; 
+                    clearInterval(timerVar); 
+                }
+
+            });
+        });
+
+
 
 		global.year=1970;
         setGdp(); 
         $("#currentSliderValue").html($("#slider").slider("option", "value"));
         global.map = drawMap;
-	});
+
+    });
 });
