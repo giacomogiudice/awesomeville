@@ -27,30 +27,31 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     };
 
     function addBubble(array,war) {
-        var lat,lon,codes;
+        var lat = 0,lon = 0;
+        var codes;
         codes = war.code.split(' / ');
-                if(codes.length === 1) {
-                    lat = util.positions[codes[0]][0];
-                    lon = util.positions[codes[0]][1];
-                }
-                else {
-                    for(var j in codes) {
-                        lat += util.positions[codes[j]][0];
-                        lon += util.positions[codes[j]][1];
-                    }
-                    lat /= codes.length;
-                    lon /= codes.length;
-                }
-                bubbles.push({
-                    "name": war.name,
-                    "size": war.size,
-                    "start": war.start,
-                    "end": war.end,
-                    "latitude": lat,
-                    "longitude": lon,
-                    "radius": Math.log(war.size/(1 + war.end - war.start)),
-                    "fillKey": "defaultFill"
-                });
+        if(codes.length === 1) {
+            lat = util.positions[codes[0]][0];
+            lon = util.positions[codes[0]][1];
+        }
+        else {
+            for(var j in codes) {
+                lat += util.positions[codes[j]][0];
+                lon += util.positions[codes[j]][1];
+            }
+            lat /= codes.length;
+            lon /= codes.length;
+        }
+        array.push({
+            "name": war.name,
+            "size": war.size,
+            "start": war.start,
+            "end": war.end,
+            "latitude": lat,
+            "longitude": lon,
+            "radius": Math.log(war.size/(1 + war.end - war.start)),
+            "fillKey": "defaultFill"
+        });
     }
 
     //Decide how wide to draw a line
@@ -166,7 +167,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             }
         }
         global.map.bubbles(bubbles,global.map.options.bubblesConfig);
-        
+
         $("#title").text(global.country); 
         $("#description").html(descriptionText);
 	};
