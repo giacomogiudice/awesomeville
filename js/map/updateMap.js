@@ -94,6 +94,33 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         }
     }
 
+    function getMaxGdp(){
+        var temp = 0; 
+        for (i in global.gdp){
+            if(parseInt(global.gdp[i])>parseInt(temp)){
+                temp=global.gdp[i]; 
+            }
+        }
+        return parseInt(temp); 
+    }
+
+    function getColor(continent, value){
+        //console.log(value);
+        var temp = parseInt(value); 
+        //console.log("rgba(0,255,0,"+temp+")");
+        switch(continent) {
+            case "AF": return "rgba(0,255,0,"+temp+")"; 
+            case "EU": return "rgba(255,255,0,"+temp+")";
+            case "OC": return "rgba(255,255,255,"+temp+")";
+            case "NA": return "rgba(255,0,0,"+temp+")";
+            case "SA": return "rgba(0,0,255,"+temp+")";
+            case "AS": return "rgba(0,0,0,"+temp+")";
+            default:  return "rgba(0,0,0,"+temp+")";;
+        }
+        return "rgba(255, 255, 255, 0.8)"; 
+    }
+
+
 	return function() {
         var year = getLastAvailableYear(global.year); 
         var descriptionText = "Immigration from:<br/>";
@@ -107,15 +134,28 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             colors[util.countryorder[i]] = '#' + Math.floor(Math.random()*16777215).toString(16);
         }
 
+        var maxSaturation = getMaxGdp(); 
+        var saturation = 0;
+        var code = ""; 
         for(i in global.continent){
+
+            console.log(global.gdp[cc[i]])
+            saturation = parseInt(global.gdp[cc[i]])/parseInt(maxSaturation);
+            if(isNaN(saturation)){
+                saturation=1;
+            } else{
+                saturation=1; 
+                console.log(saturation);
+            }
+
             //TODO: Add population variable to the colors
             switch(global.continent[i]) {
-                case "AF": colors[cc[i]] = { fillKey: "africa", value: null}; break;
-                case "EU": colors[cc[i]] = { fillKey: "europe", value: null }; break;
-                case "OC": colors[cc[i]] = { fillKey: "oceania", value: null }; break;
-                case "NA": colors[cc[i]] = { fillKey: "north_america", value: null }; break;
-                case "SA": colors[cc[i]] = { fillKey: "south_america", value: null }; break;
-                case "AS": colors[cc[i]] = { fillKey: "asia", value: null }; break;
+                case "AF": colors[cc[i]] = { color: getColor("AF", saturation), value: null}; break;
+                case "EU": colors[cc[i]] = { color: getColor("EU", saturation), value: null}; break;
+                case "OC": colors[cc[i]] = { color: getColor("OC", saturation), value: null}; break;
+                case "NA": colors[cc[i]] = { color: getColor("NA", saturation), value: null}; break;
+                case "SA": colors[cc[i]] = { color: getColor("SA", saturation), value: null}; break;
+                case "AS": colors[cc[i]] = { color: getColor("AS", saturation), value: null}; break;
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }

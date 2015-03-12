@@ -6,6 +6,8 @@ var global = {
 	migrationDataLoaded: false, 
 	migrationData: [],
 	continent: [],
+	gdpData:[],
+	gdp:[],
 	war: [],
 	yearAvailable: []
 };

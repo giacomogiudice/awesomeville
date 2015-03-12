@@ -32,10 +32,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 		}
 
 		d3.csv("http://giacomogiudice.github.io/awesomeville/raw/GDP.csv", function(d){
-			
-
-			console.log(d);
-
+			global.gdpData = d; 
 		});
 
 
