@@ -42,7 +42,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
             fillOpacity: 0.75,
             popupTemplate: function(geo,data) {
                 return '<div class="hoverlabel">' + data.name + '<br/>' +
-                    data.size + " casualties between " + data.start + " and " + data.end + '</div>';
+                    Math.round(data.size/1000) + " thousand casualties between " + data.start + " and " + data.end + '</div>';
             }
         }
     });
