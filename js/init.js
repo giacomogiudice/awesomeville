@@ -46,9 +46,9 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         function playFunction(){
                     var a = $("#slider").slider("option", "value");
-                    a+=0.05;
+                    a+=0.04;
                     $("#slider").slider("value", a);
-                    a = parseInt($("#slider").slider("option", "value"));
+                    a = parseInt( $("#slider").slider("option", "value") );
                     global.year = a;
                     setGdp(a);
                     //console.log(global.year); 

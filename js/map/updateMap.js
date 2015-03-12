@@ -79,7 +79,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return global.migrationData[(year-1960)/10];
     }
 
-    function getThreshold(origin, X){
+    function getEmigrationThreshold(origin, X){
         var year = getLastAvailableYear(global.year);
         //O(XN) function to get Xth largest value
         var largestInRound = 10000000;
@@ -88,6 +88,26 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         for(var j = 0; j < X; j++ ){
             for( i in  getDataByYear(year)[origin]){
                 t = getDataByYear(year)[origin][i]; 
+                if( parseInt(t)>parseInt(temp) && parseInt(t)<parseInt(largestInRound) ){
+                    temp = t;
+                }
+            }
+            largestInRound=temp;
+            t=0;
+            temp=0;
+        }
+        return parseInt(largestInRound); 
+    }
+
+    function getImmigrationThreshold(origin, X){
+        var year = getLastAvailableYear(global.year);
+        //O(XN) function to get Xth largest value
+        var largestInRound = 10000000;
+        var temp = +0;
+        var v = -1; 
+        for(var j = 0; j < X; j++ ){
+            for( i in  getDataByYear(year)[origin]){
+                t = getDataByYear(year)[i][origin]; 
                 if( parseInt(t)>parseInt(temp) && parseInt(t)<parseInt(largestInRound) ){
                     temp = t;
                 }
@@ -176,31 +196,56 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }
-
+        var threshold = 0; 
         var code = global.id;
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
-		
-        row = util.countryorder.indexOf(code);
-        if (row === -1) {
-        //    console.log(code + " not found"); 
-        }
-        else {
-            arcs = [];
-            var threshold = getThreshold(row, 10);
-            if (threshold<1){
-                threshold=1; 
+		if(global.emigration==true){
+            row = util.countryorder.indexOf(code);
+            if (row === -1) {
+                //console.log(code + " not found"); 
             }
-
-            for(i in getDataByYear(year)){
-                //TODO: Add threshold function()
-                if(getDataByYear(year)[row][i]>=threshold){
-                    addArc(arcs, row, i, getDataByYear(year)[row][i]);
-                    colors[util.countryorder[i]].value = getDataByYear(year)[row][i];
-                    descriptionText += util.countryorder[i] + " " + getDataByYear(year)[row][i] + "<br/>";
+            else {
+                arcs = [];
+                threshold = getEmigrationThreshold(row, 10);
+                if (threshold<1){
+                    threshold=1; 
                 }
+
+                for(i in getDataByYear(year)){
+                    //TODO: Add threshold function()
+                    if(getDataByYear(year)[row][i]>=threshold){
+                        addArc(arcs, row, i, getDataByYear(year)[row][i]);
+                        colors[util.countryorder[i]].value = getDataByYear(year)[row][i];
+                        descriptionText += util.countryorder[i] + " " + getDataByYear(year)[row][i] + "<br/>";
+                    }
+                }
+                global.map.arc(arcs);
             }
-            global.map.arc(arcs);
+        } else{
+            row = util.countryorder.indexOf(code);
+            if (row === -1) {
+                //console.log(code + " not found"); 
+            }
+            else {
+                arcs = [];
+                threshold = getImmigrationThreshold(row, 10);
+                if (threshold<1){
+                    threshold=1; 
+                }
+
+                for(i in getDataByYear(year)){
+
+                    //TODO: Add threshold function()
+                    if(getDataByYear(year)[i][row]>=threshold){
+                        addArc(arcs, i, row, getDataByYear(year)[i][row]);
+                        colors[util.countryorder[row]].value = getDataByYear(year)[i][row];
+                        descriptionText += util.countryorder[i] + " " + getDataByYear(year)[i][row] + "<br/>";
+                    }
+                }
+                global.map.arc(arcs);
+            }
         }
+
 
         global.map.updateChoropleth(colors);
 
