@@ -154,5 +154,4 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         $("#title").text(global.country); 
         $("#description").html(descriptionText);
 	};
-
 });
