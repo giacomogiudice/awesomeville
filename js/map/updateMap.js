@@ -6,6 +6,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         cc[util.countrycodes[i][0]] = util.countrycodes[i][1];
     }
     
+
 	function addArc(array,origin, destination, value){
         var originCode = util.countryorder[origin];
         var destinationCode = util.countryorder[Number(destination)];
@@ -61,13 +62,14 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
     }
 
     function getThreshold(origin, X){
+        var year = getLastAvailableYear(global.year);
         //O(XN) function to get Xth largest value
         var largestInRound = 10000000;
         var temp = +0;
         var v = -1; 
         for(var j = 0; j < X; j++ ){
-            for( i in  getDataByYear(global.year)[origin]){
-                t = getDataByYear(global.year)[origin][i]; 
+            for( i in  getDataByYear(year)[origin]){
+                t = getDataByYear(year)[origin][i]; 
                 if( parseInt(t)>parseInt(temp) && parseInt(t)<parseInt(largestInRound) ){
                     temp = t;
                 }
@@ -79,9 +81,21 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         return parseInt(largestInRound); 
     }
     
+    function getLastAvailableYear(year){
+        var temp = year; 
+        while(true){
+            if(global.yearAvailable[temp]==true){
+                return temp; 
+            } else if(global.yearAvailable[temp]==false){
+                temp--; 
+            } else{
+                return 0; 
+            }
+        }
+    }
 
 	return function() {
-        
+        var year = getLastAvailableYear(global.year); 
         var descriptionText = "Immigration from:<br/>";
 
         // handle contry colors
@@ -114,23 +128,22 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             arcs = [];
             var threshold = getThreshold(row, 10);
 
-            for(i in getDataByYear(global.year)){
+            for(i in getDataByYear(year)){
                 //TODO: Add threshold function()
-                if(getDataByYear(global.year)[row][i]>=threshold){
-                    addArc(arcs, row, i, getDataByYear(global.year)[row][i]);
-                    colors[util.countryorder[i]].value = getDataByYear(global.year)[row][i];
-                    descriptionText += util.countryorder[i] + " " + getDataByYear(global.year)[row][i] + "<br/>";
+                if(getDataByYear(year)[row][i]>=threshold){
+                    addArc(arcs, row, i, getDataByYear(year)[row][i]);
+                    colors[util.countryorder[i]].value = getDataByYear(year)[row][i];
+                    descriptionText += util.countryorder[i] + " " + getDataByYear(year)[row][i] + "<br/>";
                 }
             }
             global.map.arc(arcs);
         }
 
-
         global.map.updateChoropleth(colors);
         //handle bubbles;
         bubbles = [];
         for (i in global.war) {
-            if(global.war[i].start >= global.year && global.war[i].start < global.year+10) {
+            if(global.war[i].start >= year && global.war[i].start < year+10) {
                 //addBubble(bubbles,global.war[i].involved,global.war[i].code,20);
             }
         }

@@ -44,8 +44,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
 		map.svg.selectAll("g")
 		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	}));*/
-
-    
+  
     map.update = function() { updateMap(); } 
 
 	//add onlick event
