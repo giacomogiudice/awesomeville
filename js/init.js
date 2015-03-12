@@ -29,23 +29,23 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         $( "#slider" ).slider({
             value: 1970,
-            min: 1959,
-            max: 2001,
+            min: 1960,
+            max: 2000,
             step: 1,
             slide: function( event, ui ){
                 global.year = ui.value;
                 setGdp(ui.value); 
                 global.map.update();
 
-               var currentSliderValue = $("#slider").slider("option", "value");
+               //var currentSliderValue = $("#slider").slider("option", "value");
 	       //console.log(currentSliderValue);
-	       $("#currentSliderValue").html(currentSliderValue);
+	           $("#currentSliderValue").html(ui.value);
             }
         });
 
 		global.year=1970;
         setGdp(); 
-
+        $("#currentSliderValue").html($("#slider").slider("option", "value"));
         global.map = drawMap;
 	});
 });
