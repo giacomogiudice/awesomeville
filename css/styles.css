@@ -5,11 +5,33 @@ html, body {
 body {
 	font-family: 'Open Sans', sans-serif;
   	font-weight: 300;
-  	background-color: #222234; 
+  	background-color: #000000;
 }
 
 h2 {
-	color:white;
+	color: white;
+	float:left;
+	margin-top:15px;
+	margin-left:20px;
+}
+
+h3 {
+	color:#FF6666;
+	width:250px;
+	font-size:24px;
+	font-weight: bold;
+}
+
+#header {
+	background-color:#FF6666;
+	height:55px;
+}
+
+#logo {
+	width: 30px;
+	height: 35px;
+	margin-top: 8px;
+	margin-left: 8px;
 }
 /*Label for country name when hovering.*/
 .hoverlabel {
@@ -34,27 +56,64 @@ h2 {
 	width: 100%;
 }
 
-#mapContainer{
-	position:absolute;
-	top:0px;
-	left:10%;
-	height:95%;
-	width:70%
+#mapContainer {
+	position: absolute;
+	top: 65px;
+	left: 10px;
+	height: 90%;
+	width: 75%;
 }
+
+#sideBar {
+	float: right;
+	background-color:#333333; 
+	height:515px; 
+	width:25%;
+	float:right;
+	color: white;
+}
+
+#sideBar input {
+	width: 130px;
+	height: 35px;
+	border-width: 3px;
+	border-color: #FF6666;
+	border-style: solid;
+	font-size: 15px;
+	color: white;
+}
+
+#sideBar .selected {
+	background-color:#FF6666;
+}
+
+#sideBar .unselected {
+	background-color:#333333;
+}
+
+.description {
+	width:250px;
+	font-size:16px;
+	margin-left:25px;
+}
+
+.title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
 
 #rightContainer{
-
-color:white;
+color: white;
 width:225px;
 float: right;
-
-
-
 }
+
 #leftButtons{
 
 margin-right: 10px;
-color:white;
+color: white;
 width:225px;
 float: left;	
 
@@ -62,7 +121,7 @@ float: left;
 }
 
 #TimeSliderContainer {
-	color:white;
+	color: white;
 	position:absolute;
 	bottom:5px;
 	width:50%;

@@ -12,10 +12,11 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
 
     var map = new Datamap({
         element: $('#mapContainer')[0],
+        width: $("#container").width()* 0.75,
         projection: 'mercator',
         data: {},
         fills: { 
-            defaultFill: "#2C2C43",
+            defaultFill: "#333333",
             // continents
             africa: "#f39c12",
             europe: "#2980b9",
@@ -48,12 +49,12 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
     });
 
 	// Set zooming
-	/* Fuck Zooming. 
-    d3.select('.map').select('g').selectAll('path').style('vector-effect', 'non-scaling-stroke');
-	map.svg.call(d3.behavior.zoom().on("zoom", function() {
-		map.svg.selectAll("g")
-		.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-	}));*/
+	 // Fuck Zooming. 
+ //    d3.select('.map').select('g').selectAll('path').style('vector-effect', 'non-scaling-stroke');
+	// map.svg.call(d3.behavior.zoom().on("zoom", function() {
+	// 	map.svg.selectAll("g")
+	// 	.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+	// }));
   
     map.update = function() { updateMap(); } 
 

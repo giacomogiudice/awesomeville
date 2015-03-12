@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>
-		Awesomeville0.2
+		Flonation
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
@@ -14,34 +14,72 @@
 
 </head>
 <body>
-	<h2> <center>Migration Map</center></h2>
+	<div id="header">
+		<img id="logo" src="img/logo.png">
+		<h2><center> FLONATION </center></h2>
+	</div>
 	<div id="container">
 		<div id="mapContainer"></div>
-		<div id="rightContainer">
+		<div id="sideBar">
+			<br/>
+			<center>
+				<!--buttons-->
+				<input type="button" value="IMMIGRATION" class="selected">
+				<input type="button" value="EMIGRATION" class="unselected">
+				<hr size="1" color="#FF6666" width= 85%;> 
+			</center>
+			<!--description-->
+			<center>
+				<h3 id="title" style=""> MAIN IDEA </h3>
+			</center>
+			<p class="description title" style="">MIGRATION</p>
+			<p class="description">Click a country and see the flows. You can also see more information here. </p>
 
+			<p class="description title">GDP</p>
+			<p class="description">The XXX of the colors represents the value of GDP. </p>
+
+			<p class="description title">WARS</p>
+			<p class="description">See bubbles on the map. </p>
+		</div>
+		<!-- <div id="rightContainer">
 			<h2 id="title">Explanation </h2>
 			<hr>			
-			<p id="description" style="color:red; width:250px">hej hej hej  </p>
-	
-
-		</div>
-		<div id="leftButtons" >
-					<ol id="selectable">
-  <li class="ui-widget-content">Europa</li>
-  <li class="ui-widget-content">Africa</li>
-  <li class="ui-widget-content">America</li>
-</ol>
+			<p id="description" style="color:red; width:250px">Ciao Bella!  </p>
+		</div> -->
+		<!-- <div id="leftButtons" >
+			<ol id="selectable">
+				<li class="ui-widget-content">Europe</li>
+				<li class="ui-widget-content">Africa</li>
+				<li class="ui-widget-content">America</li>
+			</ol>
 
 
-		</div>
+		</div> -->
 
 		<div id="TimeSliderContainer">
+<<<<<<< HEAD
 		   <p id="currentSliderValue">currentSliderValue</p>
 		   <div id="play" style:"float:left;"> > </div>
 		   <div id="slider" style:"float:right"></div>
+=======
+			<p id="currentSliderValue">currentSliderValue</p>
+			<div id="play" style="left: -100px;float:left;"> > </div>
+			<div id="slider" style=""></div>
+>>>>>>> interface
 
 		</div>
 	</div>
 
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+>>>>>>> interface
