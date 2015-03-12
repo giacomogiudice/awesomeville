@@ -149,13 +149,13 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         for (i in global.war) {
             if(global.war[i].start >= year && global.war[i].start < year+10) {
                 // addBubble(bubbles,global.war[i].name,global.,global.war[i].code,10);
-                codes = global.war[i].code.split('/');
+                codes = global.war[i].code.split(' / ');
                 if(codes.length === 1) {
                     lat = util.positions[codes[0]][0];
-                    lon = util.positions[codes[1]][1]
+                    lon = util.positions[codes[0]][1];
                 }
                 else {
-                    for (int j in codes) {
+                    for(var j in codes) {
                         lat += util.positions[codes[j]][0];
                         lon += util.positions[codes[j]][1];
                     }
@@ -168,9 +168,9 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                     "size": global.war[i].size,
                     "start": global.war[i].start,
                     "end": global.war[i].end,
-                    "latitude": len,
+                    "latitude": lat,
                     "longitude": lon,
-                    "radius": global.war[i].size/1000,
+                    "radius": Math.log(10*global.war[i].size),
                     "fillKey": "defaultFill"
                 });
             }

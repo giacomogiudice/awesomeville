@@ -67,7 +67,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","data/util","data/migrat
 			return {
 				name: d["Name of War"],
 				code: d["Country code"],
-				start: +d["Start Year"],
+				start: +d["Start year"],
 				end: +d["End year"],
 				size: +d["Fatalities"]
 			};
