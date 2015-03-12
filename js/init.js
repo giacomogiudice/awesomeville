@@ -32,16 +32,30 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             min: 1960,
             max: 2000,
             step: 1,
+            animate: "slow",
             slide: function( event, ui ){
                 global.year = ui.value;
                 setGdp(ui.value); 
                 global.map.update();
 
                //var currentSliderValue = $("#slider").slider("option", "value");
-	       //console.log(currentSliderValue);
+	           //console.log(currentSliderValue);
 	           $("#currentSliderValue").html(ui.value);
             }
         });
+
+        $(function() {
+            $("#play").button()
+              .click(function( event ) {
+                event.preventDefault();
+                console.log("play");
+            });
+        });
+
+
+
+
+
 
 		global.year=1970;
         setGdp(); 
