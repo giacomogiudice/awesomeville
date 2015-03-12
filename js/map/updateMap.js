@@ -129,6 +129,11 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         global.map.updateChoropleth(colors);
         //handle bubbles;
         bubbles = [];
+        for (i in global.war) {
+            if(global.war[i].start >= global.year && global.war[i].start < global.year+10) {
+                //addBubble(bubbles,global.war[i].involved,global.war[i].code,20);
+            }
+        }
         for (i in util.countryorder) {
             if(Math.random() <0.05) addBubble(bubbles,"",util.countryorder[i],Math.random()*50);
         }
