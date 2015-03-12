@@ -17,17 +17,29 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         console.log(yearAvailable);
         
+        function setGdp(year){
+            for(i in global.gdpData){
+               //global.gdp[global.gdpData[i][] ]
+                global.gdp[global.gdpData[i]["Country Code"]]=global.gdpData[i][year];
+                //console.log(year); 
+                //console.log(global.gdpData[i][year]);
+
+            }
+        }
+
         $( "#slider" ).slider({
             value: 1970,
             min: 1960,
             max: 2000,
             step: 1,
             slide: function( event, ui ){
-               global.year = ui.value;
-               global.map.update();
+                global.year = ui.value;
+                setGdp(ui.value); 
+                global.map.update();
             }
         });
 		global.year=1970;
+        setGdp(); 
 
         global.map = drawMap;
 	});
