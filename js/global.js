@@ -9,7 +9,7 @@ var global = {
 	gdpData:[],
 	gdp:[],
 	war: [],
-	playing: false, 
+	play: false, 
 	yearAvailable: []
 };
 

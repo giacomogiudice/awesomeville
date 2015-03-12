@@ -46,7 +46,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         function playFunction(){
                     var a = $("#slider").slider("option", "value");
-                    a+=0.01;
+                    a+=0.05;
                     $("#slider").slider("value", a);
                     a = parseInt($("#slider").slider("option", "value"));
                     global.year = a;
@@ -57,13 +57,13 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
         }
 
         var timerVar; 
-        $(function() {
-            $("#play").button()
+
+        $(function() {$("#play").button()
               .click(function( event ) {
                 event.preventDefault();
+                console.log("play");
                 if(global.play==false){
                     global.play=true; 
-                    console.log("play");
                     //$("#play").text("II"); 
                     timerVar = setInterval(function(){playFunction()}, 10);
                 }else{
@@ -72,7 +72,6 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
                     global.play=false; 
                     clearInterval(timerVar); 
                 }
-
             });
         });
 
