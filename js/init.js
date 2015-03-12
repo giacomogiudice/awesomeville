@@ -1,9 +1,8 @@
 define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 	function($,drawMap,updateMap) {
 	$(function() {
-		var w = $(window).width();
-		var h = $(window).height();
 
+        $("#mapContainer").width($("#container").width()* 0.75);
         $("#selectable").selectable();
         
         var yearAvailable = []; 
