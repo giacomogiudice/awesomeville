@@ -127,12 +127,12 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         var temp = parseInt(value); 
         //console.log("rgba(0,255,0,"+temp+")");
         switch(continent) {
-            case "AF": return "rgba(0,255,0,"+temp+")"; 
-            case "EU": return "rgba(255,255,0,"+temp+")";
-            case "OC": return "rgba(255,255,255,"+temp+")";
-            case "NA": return "rgba(255,0,0,"+temp+")";
-            case "SA": return "rgba(0,0,255,"+temp+")";
-            case "AS": return "rgba(0,0,0,"+temp+")";
+            case "AF": return "rgba(127,168,44,"+temp+")"; 
+            case "EU": return "rgba(162,96,166,"+temp+")";
+            case "OC": return "rgba(168,44,44,"+temp+")";
+            case "NA": return "rgba(44,125,168,"+temp+")";
+            case "SA": return "rgba(168,44,94,"+temp+")";
+            case "AS": return "rgba(227,223,11,"+temp+")";
             default:  return "rgba(0,0,0,"+temp+")";;
         }
         return "rgba(255, 255, 255, 1)"; 
@@ -177,6 +177,10 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }
+
+
+
+
 
         var code = global.id;
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
