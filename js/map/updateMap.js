@@ -135,7 +135,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
             case "AS": return "rgba(0,0,0,"+temp+")";
             default:  return "rgba(0,0,0,"+temp+")";;
         }
-        return "rgba(255, 255, 255, 0.8)"; 
+        return "rgba(255, 255, 255, 1)"; 
     }
 
 
@@ -157,13 +157,13 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         var code = ""; 
         for(i in global.continent){
 
-            console.log(global.gdp[cc[i]])
+            //TODO: base saturation on something inteligent?
             saturation = parseInt(global.gdp[cc[i]])/parseInt(maxSaturation);
             if(isNaN(saturation)){
                 saturation=1;
             } else{
                 saturation=1; 
-                console.log(saturation);
+                //console.log(saturation);
             }
 
             //TODO: Add population variable to the colors
@@ -177,6 +177,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 default: colors[cc[i]] = { fillKey: "default", value: null };
             }
         }
+
         var code = global.id;
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
 		
@@ -202,13 +203,13 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
         //handle bubbles;
         bubbles = [];
         for (i in global.war) {
-            if(global.war[i].start >= year && global.war[i].start < year+10) {
+            if(global.war[i].start >= global.year && global.war[i].end <= global.year) {
                 addBubble(bubbles,global.war[i]);
             }
         }
         global.map.bubbles(bubbles,global.map.options.bubblesConfig);
 
-        $("#title").text(global.country); 
+        $("#title").text(global.country);
         $("#description").html(descriptionText);
 	};
 });
