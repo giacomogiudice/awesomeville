@@ -30,7 +30,7 @@ define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readda
         bubblesConfig: {
             highlightOnHover: false,
             borderWidth: 0,
-            borderColor: '#FFFFFF',
+            borderColor: 'red',
             fillOpacity: 0.75,
             popupTemplate: function(geo,data) {
                 return '<div class="hoverlabel">' + data.name + '<br/>' +

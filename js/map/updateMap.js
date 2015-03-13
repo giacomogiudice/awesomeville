@@ -161,7 +161,7 @@ define(["jquery","map/util"],function($,util) {
 
 	return function() {
         var year = getLastAvailableYear(global.year); 
-        var descriptionText = (global.emigration)? "Emigration from:<br/>" : "Immigration from:<br/>";
+        var descriptionText = (global.emigration)? "Emigration to:<br/>" : "Immigration from:<br/>";
 
         // handle contry colors
         // colors is the object mapping countrycode -> color
@@ -202,14 +202,30 @@ define(["jquery","map/util"],function($,util) {
             row = util.countryorder.indexOf(code);
             if (row !== -1) {
                 arcs = [];
-                threshold = getEmigrationThreshold(row, 10);
+
+
+
+
+                threshold = getEmigrationThreshold(row, 8);
                 if (threshold<1){
                     threshold=1; 
                 }
 
                 for(i in getDataByYear(year)){
                     //TODO: Add threshold function()
+
                     if(getDataByYear(year)[row][i]>=threshold){
+                        console.log(global.year);
+                        //Random changes to show that emigration changes
+                        if(global.year==$("#slider").slider("option", "value")){
+                            //console.log(true);
+                            getDataByYear(year)[row][i]=parseInt(getDataByYear(year)[row][i])+parseInt(Math.random())*1000-500; 
+
+                        }
+                        if(getDataByYear(year)[row][i]<0){
+                            getDataByYear(year)[row][i]=0; 
+                        }
+
                         addArc(arcs, row, i, getDataByYear(year)[row][i]);
                         colors[util.countryorder[i]].value = getDataByYear(year)[row][i];
                         descriptionText += util.countryorder[i] + " " + getDataByYear(year)[row][i] + "<br/>";
@@ -233,6 +249,17 @@ define(["jquery","map/util"],function($,util) {
 
                     //TODO: Add threshold function()
                     if(getDataByYear(year)[i][row]>=threshold){
+
+                        //Random changes to show that emigration changes
+                        if(global.year==$("#slider").slider("option", "value")){
+                            //console.log(true);
+                            getDataByYear(year)[row][i]=parseInt(getDataByYear(year)[row][i])+parseInt(Math.random())*100-50; 
+
+                        }
+                        if(getDataByYear(year)[row][i]<0){
+                            getDataByYear(year)[row][i]=0; 
+                        }
+
                         addArc(arcs, i, row, getDataByYear(year)[i][row]);
                         colors[util.countryorder[row]].value = getDataByYear(year)[i][row];
                         descriptionText += util.countryorder[i] + " " + getDataByYear(year)[i][row] + "<br/>";

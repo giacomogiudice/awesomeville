@@ -43,7 +43,7 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 
         function playFunction(){
             var a = $("#slider").slider("option", "value");
-            a+=0.06;
+            a+=0.05;
             $("#slider").slider("value", a);
             a = parseInt( $("#slider").slider("option", "value") );
             global.year = a;
