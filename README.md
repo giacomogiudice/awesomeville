@@ -1,7 +1,7 @@
-# Awesomeville 
-Awesome Slogan
+# Flonation
+An Information Visualisation Project
 ## Overview
-Awesome description of the features.
+The goal is to visualise the changes in migration patterns, in relation to wars happening around the world.
 ## Technical
 For development purposes use `js/main.js` instead of `js/main.min.js`.
 
