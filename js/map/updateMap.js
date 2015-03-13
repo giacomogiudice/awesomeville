@@ -215,10 +215,8 @@ define(["jquery","map/util"],function($,util) {
                     //TODO: Add threshold function()
 
                     if(getDataByYear(year)[row][i]>=threshold){
-                        console.log(global.year);
                         //Random changes to show that emigration changes
                         if(global.year==$("#slider").slider("option", "value")){
-                            //console.log(true);
                             getDataByYear(year)[row][i]=parseInt(getDataByYear(year)[row][i])+parseInt(Math.random())*1000-500; 
 
                         }
@@ -235,10 +233,7 @@ define(["jquery","map/util"],function($,util) {
             }
         } else{
             row = util.countryorder.indexOf(code);
-            if (row === -1) {
-                //console.log(code + " not found"); 
-            }
-            else {
+            if (row !== -1) {
                 arcs = [];
                 threshold = getImmigrationThreshold(row, 10);
                 if (threshold<1){
@@ -252,7 +247,6 @@ define(["jquery","map/util"],function($,util) {
 
                         //Random changes to show that emigration changes
                         if(global.year==$("#slider").slider("option", "value")){
-                            //console.log(true);
                             getDataByYear(year)[row][i]=parseInt(getDataByYear(year)[row][i])+parseInt(Math.random())*100-50; 
 
                         }
