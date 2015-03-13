@@ -66,10 +66,10 @@ h3 {
 
 #sideBar {
 	float: right;
-	background-color:#333333; 
-	height:515px; 
-	width:25%;
-	float:right;
+	background-color: #333333; 
+	height: 720px; 
+	width: 25%;
+	float: right;
 	color: white;
 }
 
@@ -103,29 +103,18 @@ h3 {
 	font-size: 1.2em;
 }
 
-
-#rightContainer{
-color: white;
-width:225px;
-float: right;
-}
-
-#leftButtons{
-
-margin-right: 10px;
-color: white;
-width:225px;
-float: left;	
-
-
-}
-
 #TimeSliderContainer {
 	color: white;
 	position:absolute;
 	bottom:5px;
 	width:50%;
 	left:25%;
+}
+
+#play {
+	top: -10px;
+	left: -100px;
+	float:left;
 }
 
 #currentSliderValue{

@@ -1,6 +1,6 @@
 define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
 	function($,drawMap,updateMap) {
-	$(function() {
+       $(function() {
 
         $("#mapContainer").width($("#container").width()* 0.75);
         $("#selectable").selectable();
@@ -14,12 +14,10 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
             }
         }
 
-        console.log(yearAvailable);
-        
         function setGdp(year){
             for(i in global.gdpData){
                //global.gdp[global.gdpData[i][] ]
-                global.gdp[global.gdpData[i]["Country Code"]]=global.gdpData[i][year];
+               global.gdp[global.gdpData[i]["Country Code"]]=global.gdpData[i][year];
                 //console.log(year); 
                 //console.log(global.gdpData[i][year]);
 
@@ -40,46 +38,52 @@ define(["jquery","map/drawMap","map/updateMap", "jqueryui"],
                //var currentSliderValue = $("#slider").slider("option", "value");
 	           //console.log(currentSliderValue);
 	           $("#currentSliderValue").html(parseInt(ui.value));
-            }
-        });
+           }
+       });
 
         function playFunction(){
-                    var a = $("#slider").slider("option", "value");
-                    a+=0.04;
-                    $("#slider").slider("value", a);
-                    a = parseInt( $("#slider").slider("option", "value") );
-                    global.year = a;
-                    setGdp(a);
-                    //console.log(global.year); 
-                    $("#currentSliderValue").html(a); 
-                    global.map.update();
+            var a = $("#slider").slider("option", "value");
+            a+=0.06;
+            $("#slider").slider("value", a);
+            a = parseInt( $("#slider").slider("option", "value") );
+            global.year = a;
+            setGdp(a);
+            $("#currentSliderValue").html(a); 
+            global.map.update();
         }
 
         var timerVar; 
 
-        $(function() {$("#play").button()
-              .click(function( event ) {
-                event.preventDefault();
-                console.log("play");
-                if(global.play==false){
-                    global.play=true; 
-                    //$("#play").text("II"); 
-                    timerVar = setInterval(function(){playFunction()}, 10);
-                }else{
-                    //$("#play").text(">"); 
-
-                    global.play=false; 
-                    clearInterval(timerVar); 
-                }
-            });
+        $("#play").button()
+        .click(function(event) {
+            event.preventDefault();
+            if(global.play==false){
+                $("#play .ui-button-text").html("&#9616;&#9616;");
+                global.play=true; 
+                timerVar = setInterval(function(){playFunction()}, 10);
+            }else{
+                $("#play .ui-button-text").html("&#9658; ");
+                global.play=false; 
+                clearInterval(timerVar); 
+            }
         });
 
+        $("#migration-in").click(function() {
+            global.emigration = false;
+            $("#migration-in").attr("class","selected");
+            $("#migration-out").attr("class","unselected");
+            global.map.update();
+        });
+        $("#migration-out").click(function() {
+            global.emigration = true;
+            $("#migration-in").attr("class","unselected");
+            $("#migration-out").attr("class","selected");
+            global.map.update();
+        });
 
-
-		global.year=1970;
+        global.year=1970;
         setGdp(); 
         $("#currentSliderValue").html($("#slider").slider("option", "value"));
         global.map = drawMap;
-
     });
 });

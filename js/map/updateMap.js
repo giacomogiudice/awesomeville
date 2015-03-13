@@ -1,4 +1,4 @@
-define(["jquery","data/util","data/migration"],function($,util,migration) {
+define(["jquery","map/util"],function($,util) {
 	var row = "", code = "";
     var arcs = [], bubbles = [], colors = [];
     var cc = [];
@@ -161,7 +161,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
 
 	return function() {
         var year = getLastAvailableYear(global.year); 
-        var descriptionText = "Immigration from:<br/>";
+        var descriptionText = (global.emigration)? "Emigration from:<br/>" : "Immigration from:<br/>";
 
         // handle contry colors
         // colors is the object mapping countrycode -> color
@@ -182,7 +182,6 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
                 saturation=0.5;
             } else{
                 saturation=1; 
-                //console.log(saturation);
             }
 
             //TODO: Add population variable to the colors
@@ -201,10 +200,7 @@ define(["jquery","data/util","data/migration"],function($,util,migration) {
 		//global.map.svg.selectAll('path.datamaps-arc').remove();
 		if(global.emigration==true){
             row = util.countryorder.indexOf(code);
-            if (row === -1) {
-                //console.log(code + " not found"); 
-            }
-            else {
+            if (row !== -1) {
                 arcs = [];
                 threshold = getEmigrationThreshold(row, 10);
                 if (threshold<1){

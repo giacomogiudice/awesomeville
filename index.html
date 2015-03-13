@@ -24,8 +24,8 @@
 			<br/>
 			<center>
 				<!--buttons-->
-				<input type="button" value="IMMIGRATION" class="selected">
-				<input type="button" value="EMIGRATION" class="unselected">
+				<input type="button" id="migration-in" value="IMMIGRATION" class="unselected">
+				<input type="button" id="migration-out" value="EMIGRATION" class="selected">
 				<hr size="1" color="#FF6666" width= 85%;> 
 			</center>
 			<!--description-->
@@ -33,33 +33,15 @@
 				<h3 id="title" style=""> MAIN IDEA </h3>
 			</center>
 			<p class="description title" style="">MIGRATION</p>
-			<p class="description">Click a country and see the flows. You can also see more information here. </p>
-
-			<p class="description title">GDP</p>
-			<p class="description">The XXX of the colors represents the value of GDP. </p>
-
+			<p id="description" class="description">Click a country and see the flows. You can also see more information here. </p>
 			<p class="description title">WARS</p>
-			<p class="description">See bubbles on the map. </p>
+			<p class="description">See bubbles on the map. Size represents number of casualties for the current year.</p>
 		</div>
-		<!-- <div id="rightContainer">
-			<h2 id="title">Explanation </h2>
-			<hr>			
-			<p id="description" style="color:red; width:250px">Ciao Bella!  </p>
-		</div> -->
-		<!-- <div id="leftButtons" >
-			<ol id="selectable">
-				<li class="ui-widget-content">Europe</li>
-				<li class="ui-widget-content">Africa</li>
-				<li class="ui-widget-content">America</li>
-			</ol>
-
-
-		</div> -->
-
+		
 		<div id="TimeSliderContainer">
 			<p id="currentSliderValue">currentSliderValue</p>
-			<div id="play" style="left: -100px;float:left;"> > </div>
-			<div id="slider" style=""></div>
+			<div id="play">&#9658; </div>
+			<div id="slider"></div>
 		</div>
 	</div>
 </body>

@@ -1,15 +1,6 @@
 define(["jquery","d3","topojson","datamaps", "jqueryui","map/updateMap", "readdata"],
 	function($,d3,topojson,Datamap,jqueryui,updateMap) {
 
-    /* This is how you would bind an event to the slider from here,
-    NOTE: you have to remove the event bound when the slider is created,
-    in init.js to be able to do it from here. 
-    $( "#slider" ).slider({
-      slide: function( event, ui ) {
-        console.log(ui.value*2);
-      }
-    });*/
-
     var map = new Datamap({
         element: $('#mapContainer')[0],
         width: $("#container").width()* 0.75,
