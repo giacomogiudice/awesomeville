@@ -179,7 +179,7 @@ define(["jquery","map/util"],function($,util) {
             //TODO: base saturation on something inteligent?
             saturation = parseInt(global.gdp[cc[i]])/parseInt(maxSaturation);
             if(isNaN(saturation)){
-                saturation=0.5;
+                saturation=1;
             } else{
                 saturation=1; 
             }
